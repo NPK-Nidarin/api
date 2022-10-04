@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/NPK-Nidarin/api/issues"
   },
-  "homepage": "https://github.com/NPK-Nidarin/api#readme"
+  "homepage": "https://github.com/NPK-Nidarin/api#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
