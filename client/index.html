@@ -1,15 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <title>Расписание</title>
 </head>
+
 <body>
-    
+    <div class="container pt-3" id="app" v-cloak>
+        <h1>Расписание</h1>
 
+        <form class="form-inline mb-3" @submit.prevent="returnTable">
+            <div class="form-group mr-5">
+                <label for="groupInput" class="mr-3">Группа</label>
+                <input required pattern="[А-Я][А-Я] [1-3].(([1-9][0-9])|([0-9]))" type="text" class="form-control"
+                    id="groupInput" list="groupList" v-model="form.groupInput" />
 
+            </div>
+            <div class="form-group mr-5">
+                <label for="DateInput" class="mr-3">Дата</label>
+                <input type="date" class="form-control" id="DateInput" v-model="form.DateInput" />
+            </div>
+            <div class="form-group mr-5">
+                <label for="week" class="mr-3">Неделя</label>
+                <input type="checkbox" class="form-control" id="week" v-model="form.week" />
+            </div>
+            <button class="btn btn-primary" type="submit">Получить</button>
+        </form>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Пара</th>
+                    <th scope="col">Наименование</th>
+                    <th scope="col">Кабинет</th>
+                    <th scope="col">Время</th>
+                    <th scope="col">Преподаватель</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <div class="card">
+                    
+                    <tr  v-for="row in table">
+                        <th scope="row">{{row.UF_PARA}}</th>
+                        <td>{{row.UF_ID_SUBJECT}}</td>
+                        <td>{{row.UF_LECTURE}}</td>
+                        <td>{{row.UF_DATE}}</td>
+                        <td>{{row.UF_ID_TEACHER}}</td>
+                    </tr>
+                </div>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://momentjs.com/downloads/moment.js"></script>
     <script type="module" src="frontend.js"></script>
+
+
+
+    <datalist id="groupList">
+        <option value="БУ 1.20"></option>
+        <option value="ВК 1.20"></option>
+        <option value="ВК 1.21"></option>
+        <option value="ВК 1.22"></option>
+        <option value="ВК 1.9"></option>
+        <option value="ДК 1.20"></option>
+        <option value="ДК 1.21"></option>
+        <option value="ДК 1.22"></option>
+        <option value="ДК 2.21"></option>
+        <option value="ИС 1.20"></option>
+        <option value="ИС 1.21"></option>
+        <option value="ИС 1.22"></option>
+        <option value="ИС 1.9"></option>
+        <option value="ИС 2.20"></option>
+        <option value="ИС 2.21"></option>
+        <option value="ИС 2.22"></option>
+        <option value="КП 1.20"></option>
+        <option value="КП 1.21"></option>
+        <option value="КП 1.22"></option>
+        <option value="КП 1.9"></option>
+        <option value="КС 1.20"></option>
+        <option value="МП 1.20"></option>
+        <option value="МП 1.21"></option>
+        <option value="МП 1.22"></option>
+        <option value="МР 1.20"></option>
+        <option value="МР 1.21"></option>
+        <option value="МР 1.22"></option>
+        <option value="МР 1.9"></option>
+        <option value="НГ 1.22"></option>
+        <option value="ПД 1.20"></option>
+        <option value="ПД 1.21"></option>
+        <option value="ПД 1.22"></option>
+        <option value="ПД 1.9"></option>
+        <option value="ПИ 1.20"></option>
+        <option value="ПИ 1.21"></option>
+        <option value="ПИ 1.22"></option>
+        <option value="ПИ 1.9"></option>
+        <option value="ПО 1.21"></option>
+        <option value="ПО 1.22"></option>
+        <option value="РЭ 1.20"></option>
+        <option value="РЭ 1.21"></option>
+        <option value="РЭ 1.22"></option>
+        <option value="РЭ 1.9"></option>
+        <option value="РЭ 2.20"></option>
+        <option value="РЭ 2.21"></option>
+        <option value="РЭ 2.22"></option>
+        <option value="РЭ 2.9"></option>
+        <option value="РЭ 3.20"></option>
+        <option value="РЭ 3.21"></option>
+        <option value="РЭ 3.22"></option>
+        <option value="СВ 1.20"></option>
+        <option value="СВ 1.21"></option>
+        <option value="СВ 1.22"></option>
+        <option value="ТК 1.20"></option>
+        <option value="ТК 1.21"></option>
+        <option value="ТК 1.22"></option>
+        <option value="ТК 1.9"></option>
+        <option value="ТМ 1.20"></option>
+        <option value="ТМ 1.21"></option>
+        <option value="ТМ 1.22"></option>
+        <option value="ТМ 1.9"></option>
+    </datalist>
 </body>
+
 </html>
